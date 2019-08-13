@@ -23,7 +23,7 @@ class HTMLAssetsInjectionPlugin {
         // Extracted from the chunk's registered modules' assets...
         for (const wModule of chunk.modulesIterable) {
           if (wModule.buildInfo.assets) {
-            for (const assetName in wModule.buildInfo.assets) {
+            for (const assetName of Object.getOwnPropertyNames(wModule.buildInfo.assets)) {
               if (!chunkAssets.includes(assetName)) {
                 chunkAssets.push(assetName)
               }

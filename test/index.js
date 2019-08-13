@@ -3,12 +3,7 @@ import test from 'ava'
 import webpack from 'webpack'
 import HTMLAssetsInjectionPlugin from '../'
 import fs from 'fs'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-
-const extractCSS = new ExtractTextPlugin({
-  filename: 'css/[name].css',
-  allChunks: true
-})
+import ExtractCssChunkWebpackPlugin from 'extract-css-chunks-webpack-plugin'
 
 const webpackConfig = {
   target: 'web',
@@ -53,17 +48,22 @@ const webpackConfig = {
       },
       {
         test: /\.css$/,
-        use: extractCSS.extract(['css-loader'])
-      },
+        use: [
+          ExtractCssChunkWebpackPlugin.loader,
+          'css-loader'
+        ]
+      }
     ]
   },
   plugins: [
-    extractCSS,
+    new ExtractCssChunkWebpackPlugin({
+      filename: 'css/[name].css'
+    }),
     new HTMLAssetsInjectionPlugin()
   ]
 }
 
-test.always.afterEach('clear tmp', t => {
+test.afterEach.always('clear tmp', t => {
   rimraf.sync('test/tmp')
 })
 
