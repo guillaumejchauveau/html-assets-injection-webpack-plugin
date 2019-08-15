@@ -1,11 +1,5 @@
 import { Plugin } from 'webpack'
 
-export = HTMLAssetsInjectionPlugin;
-
-declare class HTMLAssetsInjectionPlugin extends Plugin {
-  constructor (options?: HTMLAssetsInjectionPlugin.Options);
-}
-
 declare namespace HTMLAssetsInjectionPlugin {
   interface Options {
     pagePattern?: RegExp,
@@ -16,4 +10,8 @@ declare namespace HTMLAssetsInjectionPlugin {
   }
 
   type InjectCodeFn = (href: string) => string
+}
+
+export default class HTMLAssetsInjectionPlugin extends Plugin {
+  constructor (options?: HTMLAssetsInjectionPlugin.Options)
 }

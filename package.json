@@ -1,6 +1,6 @@
 {
   "name": "html-assets-injection-webpack-plugin",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Webpack plugin that injects assets in HTML files",
   "author": "Guillaume Chauveau <guillaumejchauveau.ops.gecu@outlook.com>",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "test": "ava test/*.js"
   },
   "dependencies": {
-    "html-parse-utils": "^1.0.1",
+    "html-parse-utils": "^1.2.1",
     "webpack-sources": "^1.4.3",
     "@types/webpack": "^4.32.1"
   },
